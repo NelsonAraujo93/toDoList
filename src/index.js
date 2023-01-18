@@ -1,7 +1,7 @@
 import './style.css';
-import toDoList from './toDoList';
+import ToDoList from './toDoList.js';
 
-const toDoListArray = new toDoList([]);
+const ToDoListArray = new ToDoList([]);
 
 const init = () => {
   const toDoList = document.getElementById('to-do-list');
@@ -36,8 +36,7 @@ const init = () => {
   </svg>`;
   inputToDo.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-      debugger
-      toDoListArray.addToDo(event.currentTarget.value, ulList);
+      ToDoListArray.addToDo(event.currentTarget.value, ulList);
       event.currentTarget.value = '';
     }
   });
@@ -45,7 +44,7 @@ const init = () => {
   toDoList.append(inputToDo);
   toDoList.append(ulList);
   toDoList.append(clearAllBtn);
-  toDoListArray.print(ulList);
+  ToDoListArray.print(ulList);
 };
 
 init();

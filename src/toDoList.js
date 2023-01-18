@@ -58,7 +58,7 @@ export default class ToDoList {
       inputText.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
           toDo.classList.toggle('edit');
-          item.description =  event.currentTarget.value;
+          item.description = event.currentTarget.value;
           this.update(container);
         }
       });
@@ -103,7 +103,7 @@ export default class ToDoList {
       `;
       removeBtn.addEventListener('click', () => {
         this.remove(item.index, container);
-      })
+      });
       toDo.append(removeBtn);
       return container.append(toDo);
     });
@@ -114,4 +114,3 @@ export default class ToDoList {
     this.toDoList = [];
   }
 }
-  

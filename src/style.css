@@ -133,10 +133,10 @@ li.item-to-do.edit,
   display: block;
 }
 
-.edit .to-do-icon.drag {
-  display: none;
-}
-
 .to-do-icon.drag {
   display: block;
+}
+
+.edit .to-do-icon.drag {
+  display: none;
 }
