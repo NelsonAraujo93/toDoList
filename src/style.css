@@ -49,8 +49,10 @@ input#to-do-input:focus-visible {
 }
 
 .to-do-icon {
-  width: 10px;
+  width: 30px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   right: 20px;
   cursor: move;
@@ -102,4 +104,39 @@ li.item-to-do {
   cursor: pointer;
   color: #6b6b6b;
   font-family: 'Roboto', sans-serif;
+}
+
+.to-do-icon.remove {
+  display: none;
+  right: 30px;
+  cursor: pointer;
+}
+
+input.input-to-do {
+  border: none;
+  font-size: 16px;
+  display: flex;
+  height: 97%;
+  width: 80%;
+}
+
+input.input-to-do:focus-visible {
+  outline: 0;
+}
+
+li.item-to-do.edit,
+.edit .input-to-do {
+  background: #f5ebb3;
+}
+
+.edit .to-do-icon.remove {
+  display: block;
+}
+
+.edit .to-do-icon.drag {
+  display: none;
+}
+
+.to-do-icon.drag {
+  display: block;
 }
