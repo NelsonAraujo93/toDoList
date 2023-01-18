@@ -1,7 +1,8 @@
-import "./style.css";
+import './style.css';
+
 class ToDoList {
-  constructor (list) {
-    this.toDoList = list
+  constructor(list) {
+    this.toDoList = list;
   }
 
   addToDo(task) {
@@ -9,15 +10,16 @@ class ToDoList {
       description: task,
       completed: false,
       index: 0,
-    }
+    };
     this.toDoList.unshift(newTask);
     this.update();
   }
 
   update() {
-    this.toDoList.map((item, i) => (
-      item.index = i
-    ));
+    this.toDoList.map((item, i) => {
+      item.index = i;
+      return item;
+    });
   }
 
   print(container) {
@@ -41,7 +43,7 @@ class ToDoList {
     });
   }
 
-  clearAllCompleted(container){
+  clearAllCompleted(container) {
     container.innerHTML = '';
     this.toDoList = [];
   }
@@ -81,7 +83,7 @@ const init = () => {
     <path d="M20 5a1 1 0 1 0-2 0v5.6a3.4 3.4 0 0 1-3.4 3.4H7.414l2.293-2.293a1 1 0 0 0-1.414-1.414l-4 4a1 1 0 0 0 0 1.414l4 4a1 1 0 0 0 1.414-1.414L7.414 16H14.6a5.4 5.4 0 0 0 5.4-5.4V5Z" fill="#000000"/>
   </svg>`;
   inputToDo.addEventListener('keydown', (event) => {
-    if( event.key === 'Enter' ){
+    if (event.key === 'Enter') {
       list.addToDo(event.currentTarget.value);
       event.currentTarget.value = '';
       list.print(ulList);
@@ -93,8 +95,8 @@ const init = () => {
   list.print(ulList);
   clearAllBtn.addEventListener('click', () => {
     list.clearAllCompleted(ulList);
-  })
+  });
   toDoList.append(clearAllBtn);
-}
+};
 
 init();
