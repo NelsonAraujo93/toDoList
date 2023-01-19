@@ -41,13 +41,25 @@ export default class ToDoList {
 
   print(container) {
     container.innerHTML = '';
+    let checked = 0;
     this.getLocalStorage();
     this.toDoList.map((item) => {
       const toDo = document.createElement('li');
-      toDo.className = 'item-to-do';
+      if (item.completed) {
+        toDo.classList.add('item-to-do', 'checked');
+        checked += 1;
+      } else {
+        toDo.className = 'item-to-do';
+      }
       const checkBox = document.createElement('input');
       checkBox.setAttribute('type', 'checkbox');
       checkBox.id = `to-do-${item.index}`;
+      checkBox.checked = item.completed;
+      checkBox.addEventListener('change', () => {
+        toDo.classList.toggle('checked');
+        item.completed = checkBox.checked;
+        this.update(container);
+      });
       toDo.append(checkBox);
       const inputText = document.createElement('input');
       inputText.value = item.description;
@@ -107,10 +119,23 @@ export default class ToDoList {
       toDo.append(removeBtn);
       return container.append(toDo);
     });
+    if (checked >= 1) {
+      const clearAll = document.getElementById('clear-all');
+      if (clearAll.classList.contains('disabled')) {
+        clearAll.classList.remove('disabled');
+      }
+    } else {
+      const clearAll = document.getElementById('clear-all');
+      if (!clearAll.classList.contains('disabled')) {
+        clearAll.classList.add('disabled');
+      }
+    }
   }
 
   clearAllCompleted(container) {
     container.innerHTML = '';
-    this.toDoList = [];
+    const newArray = this.toDoList.filter((item) => !item.completed);
+    this.toDoList = newArray;
+    this.update(container);
   }
 }

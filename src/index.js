@@ -24,7 +24,8 @@ const init = () => {
   inputToDo.setAttribute('type', 'text');
   inputToDo.setAttribute('placeholder', 'add to your list...');
   const clearAllBtn = document.createElement('div');
-  clearAllBtn.className = 'remove-btn';
+  clearAllBtn.classList.add('remove-btn', 'disabled');
+  clearAllBtn.id = 'clear-all';
   clearAllBtn.innerHTML = 'Clear all completed';
   const ulList = document.createElement('ul');
   ulList.id = 'list';
@@ -39,6 +40,9 @@ const init = () => {
       ToDoListArray.addToDo(event.currentTarget.value, ulList);
       event.currentTarget.value = '';
     }
+  });
+  clearAllBtn.addEventListener('click', () => {
+    ToDoListArray.clearAllCompleted(ulList);
   });
   inputToDoContainer.prepend(inputToDo);
   toDoList.append(inputToDo);

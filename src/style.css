@@ -140,3 +140,13 @@ li.item-to-do.edit,
 .edit .to-do-icon.drag {
   display: none;
 }
+
+.checked input.input-to-do {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.remove-btn.disabled {
+  cursor: not-allowed;
+  background: #c9c9c9;
+}
