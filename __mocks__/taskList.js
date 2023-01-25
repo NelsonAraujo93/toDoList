@@ -1,5 +1,3 @@
-const getLocalStorage = () => {
-  return [];
-}
+const getLocalStorage = () => [];
 
 module.exports = getLocalStorage;

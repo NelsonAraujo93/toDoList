@@ -1,6 +1,6 @@
-const getLocalStorage = require("../__mocks__/taskList");
+const getLocalStorage = require('../__mocks__/taskList.js');
 
-var localStorageList = getLocalStorage();
+const localStorageList = getLocalStorage();
 
 const toLocalStorage = () => {
   const stringToDoList = JSON.stringify(localStorageList);
@@ -9,13 +9,11 @@ const toLocalStorage = () => {
 
 const print = (ulList) => {
   ulList.innerHTML = '';
-  let checked = 0;
   getLocalStorage();
   localStorageList.map((item) => {
     const toDo = document.createElement('li');
     if (item.completed) {
       toDo.classList.add('item-to-do', 'checked');
-      checked += 1;
     } else {
       toDo.className = 'item-to-do';
     }
@@ -95,7 +93,7 @@ const update = (ulList) => {
   print(ulList);
 };
 
-module.exports = addToDo = (task, ulList) => {
+const addToDo = (task, ulList) => {
   const newTask = {
     description: task,
     completed: false,
@@ -103,4 +101,6 @@ module.exports = addToDo = (task, ulList) => {
   };
   localStorageList.push(newTask);
   update(ulList);
-}
+};
+
+module.exports = addToDo;
