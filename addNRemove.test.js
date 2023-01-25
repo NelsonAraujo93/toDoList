@@ -1,21 +1,19 @@
-const addToDo = require('./utils/addTest.js');
-const removeTest = require('./utils/removeTest.js');
+const Task = require('./utils/addNRemove.js');
 const getFilledStorage = require('./__mocks__/filledTaskList.js');
-const getLocalStorage = require('./__mocks__/taskList.js');
-
-const localStorageList = getLocalStorage();
+const domContainer = require('./__mocks__/taskListDom.js');
 const filledTaskList = getFilledStorage();
 
-test('Add an item to task list in dom expected list.length + 1', () => {
-  document.body.innerHTML = '<div id="to-do"><ul id="list"></ul></div>';
-  const ulList = document.getElementById('list');
-  addToDo('new', ulList);
-  expect(ulList.children).toHaveLength(localStorageList.length + 1);
-});
+describe('TaskList', () => {
+  const task = new Task(filledTaskList);
+  const ulList = domContainer();
 
-test('Remove an item to task list current: 2 in dom expected list.length - 1', () => {
-  document.body.innerHTML = '<div id="to-do"><ul id="list"><li id="task-1"></li><li id="task-2"></li></ul></div>';
-  const ulList = document.getElementById('list');
-  removeTest(0, ulList);
-  expect(ulList.children).toHaveLength(filledTaskList.length - 1);
+  test('Add an item to task list in dom expected list.length + 1', () => {
+    task.addToDo('new', ulList);
+    expect(ulList.children).toHaveLength(3);
+  });
+
+  test('Remove an item to task list current: 3 in dom expected list.length - 1', () => {
+    task.remove(0, ulList);
+    expect(ulList.children).toHaveLength(2);
+  });
 });
