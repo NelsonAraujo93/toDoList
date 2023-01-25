@@ -1,7 +1,6 @@
 module.exports = class Task {
   constructor(list) {
     this.localStorageList = list;
-
   }
 
   toLocalStorage = () => {
@@ -101,7 +100,6 @@ module.exports = class Task {
       index: 0,
     };
     this.localStorageList.push(newTask);
-    console.log(this.localStorageList);
     this.update(ulList);
   };
 
