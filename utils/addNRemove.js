@@ -29,6 +29,7 @@ module.exports = class Task {
       toDo.append(checkBox);
       const inputText = document.createElement('input');
       inputText.value = item.description;
+      inputText.id = `text-${item.index}`;
       inputText.className = 'input-to-do';
       inputText.addEventListener('focusin', () => {
         toDo.classList.toggle('edit');
