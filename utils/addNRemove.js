@@ -114,8 +114,15 @@ module.exports = class Task {
     this.update(ulList);
   };
 
-  edit = (index, ulList)  =>  {
+  edit = (index, ulList) => {
     this.localStorageList[index].description = 'New text';
+    this.update(ulList);
+  }
+
+  clearAllCompleted(ulList) {
+    ulList.innerHTML = '';
+    const newArray = this.localStorageList.filter((item) => !item.completed);
+    this.localStorageList = newArray;
     this.update(ulList);
   }
 };
