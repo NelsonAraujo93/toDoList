@@ -1,6 +1,6 @@
 const newTask = {
   description: 'this is a new',
-  completed: true,
+  completed: false,
   index: 0,
 };
 

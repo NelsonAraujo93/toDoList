@@ -107,4 +107,9 @@ module.exports = class Task {
     this.localStorageList.splice(index, 1);
     this.update(ulList);
   };
+
+  complete = (index, ulList) => {
+    this.localStorageList[index].completed = true;
+    this.update(ulList);
+  };
 };
