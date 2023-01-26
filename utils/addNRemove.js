@@ -112,4 +112,9 @@ module.exports = class Task {
     this.localStorageList[index].completed = true;
     this.update(ulList);
   };
+
+  edit = (index, ulList)  =>  {
+    this.localStorageList[index].description = 'New text';
+    this.update(ulList);
+  }
 };
