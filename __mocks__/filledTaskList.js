@@ -1,11 +1,11 @@
 const newTask = {
-  description: 'this is new',
-  completed: false,
+  description: 'this is a new',
+  completed: true,
   index: 0,
 };
 
 const seconTask = {
-  description: 'this is new',
+  description: 'this is a second new',
   completed: false,
   index: 1,
 };
