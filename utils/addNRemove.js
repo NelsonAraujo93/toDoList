@@ -29,6 +29,7 @@ module.exports = class Task {
       toDo.append(checkBox);
       const inputText = document.createElement('input');
       inputText.value = item.description;
+      inputText.id = `text-${item.index}`;
       inputText.className = 'input-to-do';
       inputText.addEventListener('focusin', () => {
         toDo.classList.toggle('edit');
@@ -107,4 +108,21 @@ module.exports = class Task {
     this.localStorageList.splice(index, 1);
     this.update(ulList);
   };
+
+  complete = (index, ulList) => {
+    this.localStorageList[index].completed = true;
+    this.update(ulList);
+  };
+
+  edit = (index, ulList) => {
+    this.localStorageList[index].description = 'New text';
+    this.update(ulList);
+  }
+
+  clearAllCompleted(ulList) {
+    ulList.innerHTML = '';
+    const newArray = this.localStorageList.filter((item) => !item.completed);
+    this.localStorageList = newArray;
+    this.update(ulList);
+  }
 };
